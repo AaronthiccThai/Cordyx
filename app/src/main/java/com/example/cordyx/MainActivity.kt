@@ -9,7 +9,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.lifecycle.ViewModel
-import com.example.cordyx.ui.components.XpViewModel
+import com.example.cordyx.ui.components.xp.XpViewModel
 import com.example.cordyx.ui.theme.CordyxTheme
 import com.example.cordyx.ui.screens.TitleScreen
 class MainActivity : ComponentActivity() {

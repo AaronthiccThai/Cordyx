@@ -11,23 +11,18 @@ import androidx.compose.material3.Button
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableIntStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.cordyx.R
-import com.example.cordyx.ui.components.XpProgressBar
-import com.example.cordyx.ui.components.XpViewModel
+import com.example.cordyx.ui.components.xp.XpProgressBar
+import com.example.cordyx.ui.components.xp.XpViewModel
 
 
 @Composable
 fun TitleScreen(xpViewModel: XpViewModel = viewModel()) {
-    var count by remember { mutableIntStateOf(0) }
 
     Column(
         modifier = Modifier
@@ -47,7 +42,6 @@ fun TitleScreen(xpViewModel: XpViewModel = viewModel()) {
             text = stringResource(id = R.string.tagline),
             style = MaterialTheme.typography.bodyLarge
         )
-        Text("Count: $count")
 
 
         Row(

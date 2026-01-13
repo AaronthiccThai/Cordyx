@@ -1,4 +1,4 @@
-package com.example.cordyx.ui.components
+package com.example.cordyx.ui.components.xp
 
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.foundation.layout.Column
