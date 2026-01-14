@@ -18,34 +18,13 @@ import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.tooling.preview.Preview
 
-@OptIn(ExperimentalMaterial3Api::class)
+@Preview(showBackground = true)
 @Composable
 fun MainScreen() {
     var selectedTab by remember { mutableIntStateOf(0) }
 
-    Scaffold(
-        topBar = {
-            TopAppBar(title = { Text("Cordyx") })
-        },
-        bottomBar = {
-            BottomNavBar(
-                selectedTab = selectedTab,
-                onSelect = { selectedTab = it }
-            )
-        }
-    ) { padding ->
-        Box(modifier = Modifier.padding(padding)) {
-            when (selectedTab) {
-                0 -> Text("Home Screen")
-                1 -> Text("Chat Screen")
-                else -> Text("Settings Screen")
-            }
-        }
-    }
 }
 
-@Composable
-fun BottomNavBar(selectedTab: Int, onSelect: (Int) -> Unit) {
 
-}
