@@ -21,10 +21,11 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             CordyxTheme {
-                val navController = rememberNavController()
-                val xpViewModel = XpViewModel()
-                val habitViewModel = HabitViewModel()
-                AppScaffold(navController = navController, habitViewModel = habitViewModel)
+                CordyxApp()
+//                val navController = rememberNavController()
+//                val xpViewModel = XpViewModel()
+//                val habitViewModel = HabitViewModel()
+//                AppScaffold(navController = navController, habitViewModel = habitViewModel)
 
             }
         }
