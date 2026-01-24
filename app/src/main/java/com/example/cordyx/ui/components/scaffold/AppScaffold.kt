@@ -5,21 +5,41 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
-import com.example.cordyx.ui.components.habit.HabitViewModel
-import com.example.cordyx.ui.screens.HabitScreen
-import com.example.cordyx.ui.screens.MainScreen
-import com.example.cordyx.ui.screens.Routes
+import com.example.cordyx.ui.components.routes.Routes
+import com.example.cordyx.ui.components.schedule.ScheduleBlock
+import com.example.cordyx.ui.components.schedule.ScheduleFab
+import com.example.cordyx.ui.components.schedule.ScheduleScreen
+import com.example.cordyx.ui.components.schedule.ScheduleViewModel
+import com.example.cordyx.ui.components.settings.SettingsScreen
+import com.example.cordyx.ui.components.settings.SettingsViewModel
 
 @Composable
-fun AppScaffold(habitViewModel: HabitViewModel) {
+fun AppScaffold() {
     val internalNavController = rememberNavController()
     val navBackStackEntry by internalNavController.currentBackStackEntryAsState()
     val currentRoute = navBackStackEntry?.destination?.route
+    val scheduleViewModel: ScheduleViewModel = viewModel()
+    val settingViewModel: SettingsViewModel = viewModel()
+    var showDialog by remember { mutableStateOf(false) }
+
+    if (showDialog) {
+        AddEventDialog(
+            onDismiss = { showDialog = false },
+            onConfirm = { day, hour, title ->
+                scheduleViewModel.addEvent(ScheduleBlock(hour, title))
+                showDialog = false
+            }
+        )
+    }
 
     Scaffold(
         topBar = {
@@ -42,15 +62,19 @@ fun AppScaffold(habitViewModel: HabitViewModel) {
                     }
                 }
             )
+        },
+        floatingActionButton = {
+            ScheduleFab(currentRoute, onClick = { showDialog = true })
         }
     ) { padding ->
         NavHost(
             navController = internalNavController,
-            startDestination = Routes.Main.route,
+            startDestination = Routes.Schedule.route,
             modifier = Modifier.padding(padding)
         ) {
-            composable(Routes.Habits.route) { HabitScreen(habitViewModel) }
-            composable(Routes.Main.route) { MainScreen() }
+            composable(Routes.Setting.route) { SettingsScreen(settingViewModel) }
+            composable(Routes.Schedule.route) {
+                ScheduleScreen(scheduleViewModel, settingViewModel) }
         }
     }
 }

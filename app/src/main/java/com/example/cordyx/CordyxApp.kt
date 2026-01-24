@@ -1,14 +1,12 @@
 package com.example.cordyx
 
 import androidx.compose.runtime.Composable
-import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.example.cordyx.ui.components.habit.HabitViewModel
 import com.example.cordyx.ui.components.scaffold.AppScaffold
-import com.example.cordyx.ui.screens.Routes
-import com.example.cordyx.ui.screens.TitleScreen
+import com.example.cordyx.ui.components.routes.Routes
+import com.example.cordyx.ui.components.routes.TitleScreen
 
 @Composable
 fun CordyxApp() {
@@ -29,8 +27,7 @@ fun CordyxApp() {
         }
 
         composable(Routes.App.route) {
-            val habitViewModel = viewModel<HabitViewModel>()
-            AppScaffold(habitViewModel)
+            AppScaffold()
         }
     }
 }

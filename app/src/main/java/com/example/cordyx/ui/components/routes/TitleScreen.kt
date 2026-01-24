@@ -1,4 +1,4 @@
-package com.example.cordyx.ui.screens
+package com.example.cordyx.ui.components.routes
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box

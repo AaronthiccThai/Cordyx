@@ -56,29 +56,29 @@ fun TopNavBarPreview(
     TopAppBar(
         title = { Text("Cordyx") },
 
-        actions = {
-            IconButton(onClick = { Log.d("TAG","Add Habit") }) {
-                Icon(
-                    imageVector = Icons.Filled.Add,
-                    contentDescription = "Add Habit"
-                )
-            }
-
-            IconButton(onClick =  { Log.d("TAG","Edit Habit") }) {
-                Icon(
-                    imageVector = Icons.Filled.Edit,
-                    contentDescription = "Edit Habits"
-                )
-            }
-
-            IconButton(onClick = { Log.d("TAG","Settings") }) {
-                Icon(
-                    imageVector = Icons.Filled.Settings,
-                    contentDescription = "Settings"
-                )
-            }
-
-        }
+//        actions = {
+//            IconButton(onClick = { Log.d("TAG","Add Habit") }) {
+//                Icon(
+//                    imageVector = Icons.Filled.Add,
+//                    contentDescription = "Add Habit"
+//                )
+//            }
+//
+//            IconButton(onClick =  { Log.d("TAG","Edit Habit") }) {
+//                Icon(
+//                    imageVector = Icons.Filled.Edit,
+//                    contentDescription = "Edit Habits"
+//                )
+//            }
+//
+//            IconButton(onClick = { Log.d("TAG","Settings") }) {
+//                Icon(
+//                    imageVector = Icons.Filled.Settings,
+//                    contentDescription = "Settings"
+//                )
+//            }
+//
+//        }
     )
 
 }
