@@ -10,6 +10,8 @@ import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
@@ -28,14 +30,19 @@ fun ScheduleScreen(
     )
 
     val hours = (0..23).toList()
+    val selectedDay by scheduleViewModel.selectedDay.collectAsState()
+    val schedule by scheduleViewModel.scheduleForDay.collectAsState()
 
     Column() {
         LazyRow(
             modifier = Modifier.fillMaxWidth().padding(vertical = 8.dp, horizontal = 12.dp)
         ) {
             items(days) { day ->
-                DayBlock(day, scheduleViewModel.selectedDay.value == day,
-                    onClick = { scheduleViewModel.selectedDay.value = day})
+                DayBlock(
+                    day = day,
+                    selected = selectedDay == day,
+                    onClick = { scheduleViewModel.selectDay(day) }
+                )
             }
 
         }
@@ -49,9 +56,7 @@ fun ScheduleScreen(
                     formatTo12Hour(hour)
                 }
 
-                val block = scheduleViewModel
-                    .scheduleForSelectedDay()
-                    .find { it.hour == hour }
+                val block = schedule.find { it.hour == hour }
 
                 TimeBlock(
                     hour = label,

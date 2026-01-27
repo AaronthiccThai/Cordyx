@@ -16,70 +16,9 @@ import androidx.compose.ui.tooling.preview.Preview
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun TopNavBar(
-    onAddHabit: () -> Unit,
-    onEditHabit: () -> Unit,
-    onSettings: () -> Unit
-) {
+fun TopNavBar() {
     TopAppBar(
         title = { Text("Cordyx") },
-        actions = {
-            IconButton(onClick = onAddHabit) {
-                Icon(
-                    imageVector = Icons.Filled.Add,
-                    contentDescription = "Add Habit"
-                )
-            }
-
-            IconButton(onClick = onEditHabit) {
-                Icon(
-                    imageVector = Icons.Filled.Edit,
-                    contentDescription = "Edit Habits"
-                )
-            }
-
-            IconButton(onClick = onSettings) {
-                Icon(
-                    imageVector = Icons.Filled.Settings,
-                    contentDescription = "Settings"
-                )
-            }
-        }
     )
-}
-@OptIn(ExperimentalMaterial3Api::class)
-@Preview(showBackground = true)
-@Composable
-fun TopNavBarPreview(
-
-) {
-    TopAppBar(
-        title = { Text("Cordyx") },
-
-//        actions = {
-//            IconButton(onClick = { Log.d("TAG","Add Habit") }) {
-//                Icon(
-//                    imageVector = Icons.Filled.Add,
-//                    contentDescription = "Add Habit"
-//                )
-//            }
-//
-//            IconButton(onClick =  { Log.d("TAG","Edit Habit") }) {
-//                Icon(
-//                    imageVector = Icons.Filled.Edit,
-//                    contentDescription = "Edit Habits"
-//                )
-//            }
-//
-//            IconButton(onClick = { Log.d("TAG","Settings") }) {
-//                Icon(
-//                    imageVector = Icons.Filled.Settings,
-//                    contentDescription = "Settings"
-//                )
-//            }
-//
-//        }
-    )
-
 }
 

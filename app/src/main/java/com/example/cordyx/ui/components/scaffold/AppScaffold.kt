@@ -43,11 +43,7 @@ fun AppScaffold() {
 
     Scaffold(
         topBar = {
-            TopNavBar(
-                onAddHabit = { Log.d("TAG", "Add Habit") },
-                onEditHabit = { Log.d("TAG", "Edit Habit") },
-                onSettings = { Log.d("TAG", "Settings") }
-            )
+            TopNavBar()
         },
         bottomBar = {
             BottomNavBar(
